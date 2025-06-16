@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart - JESCA Cosmetics</title>
+  <style>
+    body { font-family: Arial; background: #fff0f5; padding: 1rem; }
+    nav { background: #800040; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; }
+    .order { max-width: 600px; margin: auto; }
+    input, textarea, button { width: 100%; margin: 10px 0; padding: 10px; }
+    button { background: #c71585; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="order.html">Order</a>
+  <a href="contact.html">Contact</a>
+</nav>
+<div class="order">
+  <h2>Cart Summary</h2>
+  <div id="cart-items"></div>
+  <form onsubmit="sendOrder(event)">
+    <textarea id="summary" rows="5" readonly></textarea>
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <input type="text" id="address" placeholder="Delivery Address" required />
+    <button type="submit">Send Order</button>
+  </form>
+</div>
+<script>
+function renderCart() {
+  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  let summary = "";
+  let total = 0;
+  cart.forEach(item => {
+    summary += `${item.product} - TZS ${item.price}\n`;
+    total += item.price;
+  });
+  summary += `Total: TZS ${total}`;
+  document.getElementById("summary").value = summary;
+}
+function sendOrder(e) {
+  e.preventDefault();
+  alert(" THANK YOU TO VISTING JESCA COSMETICS Order sent!)");
+  localStorage.removeItem("cart");
+  renderCart();
+}
+renderCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - JESCA COSMETICS</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff0f5; }
+    nav { background: #c71585; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    .carousel img { width: 100%; height: 200px; object-fit: cover; display: none; }
+    .carousel img.active { display: block; }
+    header { text-align: center; padding: 2rem; background: linear-gradient(to right, #ff69b4, #c71585); color: white; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="order.html">order</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<header>
+  <h1>Welcome to JESCA COSMETICS </h1>
+  <p>Your beauty, our priority!</p>
+</header>
+
+<div class="carousel">
+  <img src="22.jpg" class="active">
+  <img src="33.jpg">
+    <img src="111.jpg">
+      <img src="444.jpg">
+      <img src="55.jpg">
+</div>
+
+<script>
+  let slides = document.querySelectorAll(".carousel img");
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+</script>
+</body>
+</html>
